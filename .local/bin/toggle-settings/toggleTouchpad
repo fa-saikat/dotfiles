@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# *-------------------------------------------------*
+# | Project Name    - toggle_webcam.sh
+# | Created On      - 11/15/21, 07:15:46 PM
+# | Author          - MD Fahim Abrar Saikat
+# | Author E-Mail   - saikat.cucse.52@gmail.com
+# | Author GitHub   - https://github.com/FA-Saikat
+# *-------------------------------------------------*
+
+#!/bin/bash
+
+declare -i ID
+ID=`xinput list | grep -Eio '(touchpad|glidepoint)\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
+declare -i STATE
+STATE=`xinput list-props $ID | grep 'Device Enabled' | awk '{print $4}'`
+if [ $STATE -eq 1 ]
+then
+    xinput disable $ID
+    # echo "Touchpad disabled."
+    notify-send -a 'Touchpad' 'Disabled' -i input-touchpad
+else
+    xinput enable $ID
+    # echo "Touchpad enabled."
+    notify-send -a 'Touchpad' 'Enabled' -i input-touchpad
+fi

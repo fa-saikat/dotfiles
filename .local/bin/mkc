@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# *-------------------------------------------------*
+# | Project Name    - mkc
+# | Created On      - 03/06/22, 09:14:47 PM
+# | Author          - MD Fahim Abrar Saikat
+# | Author E-Mail   - saikat.cucse.52@gmail.com
+# | Author GitHub   - https://github.com/FA-Saikat
+# *-------------------------------------------------*
+mkdirs(){
+    mkdir -p "$1"/{exe,src,out,log}
+    # mkhead "${1}"/src/"$1".c
+}
+
+if [ -n "$1" ]; then
+    projectName="$1"
+else
+    printf "$(tput bold setaf 3):: Project name:$(tput sgr0) " && read projectName
+fi
+
+mkdirs "${projectName}" && cd "${projectName}"/src || exit 1
+$SHELL

@@ -1,0 +1,22 @@
+#!/bin/bash
+# *-------------------------------------------------*
+# | Project Name    - toggleVolume.sh
+# | Path            - /home/saikat/.local/bin
+# | Created On      - 02/04/22, 11:22:30 PM
+# | Author          - MD Fahim Abrar Saikat
+# | Author E-Mail   - saikat.cucse.52@gmail.com
+# | Author GitHub   - https://github.com/FA-Saikat
+# *-------------------------------------------------*
+
+STATUS=$(amixer | grep 'Front Left: Playback' | awk '{print $NF}')
+
+TOOGLE(){
+    if [[ $STATUS = "[on]" ]]; then
+        amixer set Master mute
+    else
+        amixer set Master unmute
+    fi
+}
+
+# echo "$STATUS"
+TOOGLE && exit

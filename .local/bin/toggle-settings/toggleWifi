@@ -1,0 +1,22 @@
+#!/bin/bash
+# *-------------------------------------------------*
+# | Project Name    - Wifi
+# | Created On      - 02/05/22, 04:40:34 PM
+# | Author          - MD Fahim Abrar Saikat
+# | Author E-Mail   - saikat.cucse.52@gmail.com
+# | Author GitHub   - https://github.com/FA-Saikat
+# *-------------------------------------------------*
+
+status=$(nmcli radio | awk 'NR==2 {print $2}')
+
+case $status in
+    enabled)
+        nmcli radio wifi off
+        ;;
+    disabled)
+        nmcli radio wifi on
+        ;;
+    *)
+        exit 1
+        ;;
+    esac

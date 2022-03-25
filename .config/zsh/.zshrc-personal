@@ -1,0 +1,146 @@
+# ░█▀█░█▀▄░█▀█░█▄█░█▀█░▀█▀
+# ░█▀▀░█▀▄░█░█░█░█░█▀▀░░█░
+# ░▀░░░▀░▀░▀▀▀░▀░▀░▀░░░░▀░
+#colorballs
+# colorline
+# bunny.sh
+
+# ░█▀█░█░░░▀█▀░█▀█░█▀▀░█▀▀░█▀▀
+# ░█▀█░█░░░░█░░█▀█░▀▀█░█▀▀░▀▀█
+# ░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
+
+
+# Directory listing
+alias la="lsd -A"
+alias ll="lsd -l"
+alias lla="lsd -lA"
+alias ls="lsd"
+alias lt="lsd --tree"
+
+# Copying with rsync
+alias yy="rsync -vP"
+alias yyd="rsync -dprvP"
+
+# Create directory
+alias mkd="mkdir -vp"
+
+# Detailed search for applications using paru
+alias pkgfind="paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S"
+
+# Estimate file space usage
+alias sz="du -sh"
+
+# ytfzf
+alias yts="ytfzf -tfl --subs=2 --preview-side=right "
+alias yt="ytfzf -tf --preview-side=right"
+
+# yt-dlp
+alias yta="yt-dlp --extract-audio --audio-format "
+alias ytv-best="yt-dlp -f bestvideo+bestaudio "
+alias ytv-list="yt-dlp -f bestvideo+bestaudio --yes-playlist"
+
+# Htop
+alias htop="htop --tree"
+
+# xrdb
+alias load="xrdb -load ~/.config/X11/xresources"
+
+# sxiv
+alias sx="sxiv -b ./"
+
+# Set background
+alias setbg="nitrogen --set-scaled --save"
+
+# neovim
+alias v="nvim"
+
+# Power Profile
+alias pp="powerprofilesctl"
+alias ppp="sudo powerprofilesctl set performance"
+alias ppb="sudo powerprofilesctl set balanced"
+alias pps="sudo powerprofilesctl set power-saver"
+
+# misc
+alias wnet="slurm -i wlp2s0"
+alias clock="tty-clock -tcsf '%A, %B %d'"
+
+
+# ░█▀▀░█▀▀░▀█▀░█▀█░█▀█░▀█▀
+# ░▀▀█░█▀▀░░█░░█░█░█▀▀░░█░
+# ░▀▀▀░▀▀▀░░▀░░▀▀▀░▀░░░░▀░
+
+# setopt autocd               # change to named directory
+# setopt cdspell            # autocorrects cd misspellings
+# setopt -s cmdhist          # save multi-line commands in history as single line
+# setopt -s dotglob
+# setopt -s histappend       # do not overwrite history
+# setopt -s expand_aliases   # expand aliases
+
+
+# ░█▀▀░▀█▀░█▀█░█▀▄░▀█▀░█░█
+# ░▀▀█░░█░░█▀█░█▀▄░░█░░▄▀▄
+# ░▀▀▀░░▀░░▀░▀░▀░▀░░▀░░▀░▀
+
+# start dwm
+# if [ "$(tty)" = "/dev/tty1" ]; then
+#     startDE.exec
+#   # pgrep -x dwm || exec startx
+# fi
+
+
+# ░█▀▀░█░█░█▀█░█▀▀░▀█▀░▀█▀░█▀█░█▀█░█▀▀
+# ░█▀▀░█░█░█░█░█░░░░█░░░█░░█░█░█░█░▀▀█
+# ░▀░░░▀▀▀░▀░▀░▀▀▀░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
+
+# Fuzzy Change dir
+fd(){
+    cd "$(find ~/ -type d | fzf)"
+}
+
+# Fuzzy Edit
+ff(){
+    xdg-open "$(find ~/ -type f | fzf)"
+    # $EDITOR "$(find ~/ -type f | fzf)"
+}
+
+# Change & list dir
+altercd() {
+    cd() {
+        unset -f cd
+        cd "$@" && lsd --group-dirs first
+        altercd
+    }
+}; altercd
+
+# Browsing packages with additional info
+pkginfo(){
+    paru -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'
+}
+
+
+# ░▀█▀░█░█░█▀▀░█▄█░█▀▀░█▀▀
+# ░░█░░█▀█░█▀▀░█░█░█▀▀░▀▀█
+# ░░▀░░▀░▀░▀▀▀░▀░▀░▀▀▀░▀▀▀
+
+# candy-kingdom
+# amuse
+# ys
+# apple
+# adben
+# fletcherm
+# wedisagree
+# sonicradish
+# miloshadzic
+# refined
+# norm
+# arrow
+# cypher
+# intheloop
+# linuxonly
+# avit
+# nanotech
+# juanghurtado
+# gozilla
+# obraun
+# tjkirch
+# sorin

@@ -1,0 +1,10 @@
+#!/bin/bash
+# *-------------------------------------------------*
+# | Project Name    - toggleMic
+# | Created On      - 02/06/22, 01:01:36 AM
+# | Author          - MD Fahim Abrar Saikat
+# | Author E-Mail   - saikat.cucse.52@gmail.com
+# | Author GitHub   - https://github.com/FA-Saikat
+# *-------------------------------------------------*
+
+amixer set Capture toggle &> /dev/null

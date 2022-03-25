@@ -1,0 +1,12 @@
+dme|dmenu_sbg|sh
+dme|dmenu_fg|sh
+cha|ch_char|clangd
+std|st_stdio.h>|clangd
+tme|t_time.h>|clangd
+pro|program|around
+time|t_time.h>|clangd
+rand|r_rand|clangd
+|status|file
+int|int_int|clangd
+|sm-wget-download|file
+Wri|Write|around

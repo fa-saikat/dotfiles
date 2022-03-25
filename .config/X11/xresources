@@ -1,0 +1,159 @@
+!  ██╗░░██╗██████╗░███████╗███████╗░██████╗░██╗░░░██╗██████╗░░██████╗███████╗███████╗
+!  ╚██╗██╔╝██╔══██╗██╔════╝██╔════╝██╔═══██╗██║░░░██║██╔══██╗██╔════╝██╔════╝██╔════╝
+!  ░╚███╔╝░██████╔╝█████╗░░███████╗██║░░░██║██║░░░██║██████╔╝██║░░░░░█████╗░░███████╗
+!  ░██╔██╗░██╔══██╗██╔══╝░░╚════██║██║░░░██║██║░░░██║██╔══██╗██║░░░░░██╔══╝░░╚════██║
+!  ██╔╝░██╗██║░░██║███████╗███████║╚██████╔╝╚██████╔╝██║░░██║╚██████╗███████╗███████║
+!  ╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝╚══════╝░╚═════╝░░╚═════╝░╚═╝░░╚═╝░╚═════╝╚══════╝╚══════╝
+
+!  ░█▀▀░█▀█░█░░░█▀█░█▀▄░█▀▀
+!  ░█░░░█░█░█░░░█░█░█▀▄░▀▀█
+!  ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
+
+! special
+! *.foreground:   #c7ccd1
+! *.background:   #1c2023
+! *.cursorColor:  #c7ccd1
+
+! SERENADE
+#define serenadefg #BFDDB2
+#define serenadebg #2A2F33
+#define serenadecc #BFDDB2
+
+#define serenade0 #504945
+#define serenade1 #EA5252
+#define serenade2 #ACB765
+#define serenade3 #C1BF89
+#define serenade4 #82ABBC
+#define serenade5 #B18A97
+#define serenade6 #88B482
+#define serenade7 #BFDDB2
+
+! NORD
+#define nordbg #D8DEE9
+#define nordfg #2E3440
+#define nordcc #434C5E
+
+#define nord0 #2E3440
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #4C566A
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+*.foreground:   serenadefg
+*.background:   serenadebg
+*.cursorColor:  serenadecc
+*fading: 35
+*fadeColor: serenade3
+
+*.color0: serenade0
+*.color1: serenade1
+*.color2: serenade2
+*.color3: serenade3
+*.color4: serenade4
+*.color5: serenade5
+*.color6: serenade6
+*.color7: serenade7
+*.color8: serenade0
+*.color9: serenade1
+*.color10: serenade2
+*.color11: serenade3
+*.color12: serenade4
+*.color13: serenade5
+*.color14: serenade6
+*.color15: serenade7
+
+!  ░█▀▀░█▀█░█▀█░▀█▀░█▀▀
+!  ░█▀▀░█░█░█░█░░█░░▀▀█
+!  ░▀░░░▀▀▀░▀░▀░░▀░░▀▀▀
+
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rightScrollBar: rgb
+Xft.autohint: true
+Xft.hintstyle: full
+Xft.lcdfilter: lcddefault
+
+!  ░█░█░█▀▄░█░█░█░█░▀█▀
+!  ░█░█░█▀▄░▄▀▄░▀▄▀░░█░
+!  ░▀▀▀░▀░▀░▀░▀░░▀░░░▀░
+
+URxvt.cursorBlink: 1
+URxvt.font: xft:Cascadia Code:pixelsize=15:antialias=true,xft:Cascadia Code
+URxvt.boldFont: xft:Cascadia Code:pixelsize=15:weight=bold:antialias=true,xft:Cascadia Code
+URxvt.italicFont: xft:Cascadia Code:pixelsize=15:weight=italic:antialias=true,xft:Cascadia Code
+
+URxvt.lineSpace: 1
+URxvt.letterSpace: -1
+URxvt.scrollBar: false
+URxvt.internalBorder: 32
+URxvt.geometry: 70x13
+URxvt.thickness: 5
+URxvt.titleBar: true
+URxvt.intensityStyles: false
+URxvt.scrollTtyKeypress: true
+URxvt.scrollTtyOutput: true
+URxvt.cursorUnderline: true
+URxvt*allow_bold: true
+URxvt*iso14755: False
+
+URxvt.perl-ext-common: fullscreen,resize-font,matcher,clipboard
+URxvt.keysym.F11: perl:fullscreen:switch
+URxvt.keysym.C-Down: resize-font:smaller
+URxvt.keysym.C-Up: resize-font:bigger
+URxvt.url-launcher: firefox
+URxvt.matcher.button: 1
+
+! perl extensions
+URxvt*perl-ext-common:  default,clipboard,url-select,keyboard-select,resize-font
+!URxvt*perl-ext-common:  default,clipboard,url-select,keyboard-select,tabbed
+
+! macros for clipboard and selection
+URxvt*copyCommand:      xclip -i -selection clipboard
+URxvt*pasteCommand:     xclip -o -selection clipboard
+URxvt*keysym.M-c:       perl:clipboard:copy
+URxvt*keysym.m-v:       perl:clipboard:paste
+URxvt*keysym.M-C-v:     perl:clipboard:paste_escaped
+URxvt*keysym.M-Escape:  perl:keyboard-select:activate
+URxvt*keysym.M-s:       perl:keyboard-select:search
+URxvt*keysym.M-u:       perl:url-select:select_next
+URxvt*resize-font.smaller:	C-Down
+URxvt*resize-font.bigger:	C-Up
+URxvt*urlLauncher:      firefox
+URxvt*underlineURLs:    true
+URxvt*urlButton:        1
+URxvt*geometry: 		90x30
+
+
+!  ░█░█░▀█▀░█▀▀░█▀▄░█▄█
+!  ░▄▀▄░░█░░█▀▀░█▀▄░█░█
+!  ░▀░▀░░▀░░▀▀▀░▀░▀░▀░▀
+
+XTerm.termName: xterm-256color
+XTerm.vt100.locale: true
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+XTerm.vt100.saveLines: 16384
+XTerm.vt100.faceName: xft:NotoSansMono Nerd Font:size=10.5:antialias=true
+XTerm.vt100.bellIsUrgent: true
+XTerm.letterSpace: 0
+XTerm.scaleHeight: 1.01
+XTerm.faceSize: 10
+XTerm.internalBorder: 32
+XTerm.vt100*geometry: 70x13
+XTerm.loginShell: true
+XTerm.charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+XTerm.eightBitInput: false
+

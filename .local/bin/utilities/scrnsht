@@ -1,0 +1,112 @@
+#!/bin/sh
+
+# *-------------------------------------------------*
+# | Project Name    - ScreenShot.sh
+# | Created On      - 01/25/22, 02:05:00 PM
+# | Author          - MD Fahim Abrar Saikat
+# | Author E-Mail   - saikat.cucse.52@gmail.com
+# | Author GitHub   - https://github.com/fa-saikat
+# *-------------------------------------------------*
+
+[[ -e "/usr/bin/maim" ]] || paru -S maim
+[[ -e "/usr/bin/xclip" ]] || paru -S xclip
+[[ -d $HOME"/Pictures/ScreenShots" ]] || mkdir -vp $HOME"/Pictures/ScreenShots"
+
+serenade_nbg="#2a2f33"
+serenade_nfg="#acb765"
+serenade_sbg="#2a2f33"
+serenade_sfg="#d76e6e"
+
+ayu_nbg="#1e2431"
+ayu_nfg="#979691"
+ayu_sbg="#424852"
+ayu_sfg="#d34748"
+
+nord_nbg="#2e3440"
+nord_nfg="#eceff4"
+nord_sbg="#3b4252"
+nord_sfg="#d76e6e"
+
+onedark_nbg="#282c33"
+onedark_nfg="#abb2bf"
+onedark_sbg="#272c35"
+onedark_sfg="#e06b74"
+
+gruvbox_nbg="#282828"
+gruvbox_nfg="#928374"
+gruvbox_sbg="#282828"
+gruvbox_sfg="#83a598"
+
+tomorrow_nbg="#27292c"
+tomorrow_nfg="#a7a8a7"
+tomorrow_sbg="#35383c"
+tomorrow_sfg="#d77c79"
+
+dmenu_nbg=$serenade_nbg
+dmenu_nfg=$serenade_nfg
+dmenu_sbg=$serenade_nbg
+dmenu_sfg=$serenade_sfg
+
+SAVE(){
+    cp $HOME/.cache/screenshot.png $HOME/Pictures/ScreenShots/$(date +%s).png &> /dev/null
+}
+
+NOTIFY(){
+    notify-send -i $FILE "Screenshot Captured!" "$@"
+}
+
+CLIPBOARD(){
+    maim -m 10 -u -s | xclip -selection clipboard -t image/png && \
+        notify-send "Screenshot Captured" "Copied to Clipboard!"
+}
+
+SELECTION(){
+    maim -m 10 -u -s $HOME/.cache/screenshot.png && \
+        NOTIFY "Selection Saved" && \
+        SAVE
+}
+
+FULLSCREEN(){
+    maim -m 10 -u $HOME/.cache/screenshot.png && \
+        NOTIFY "Fullscreen Captured" && \
+        SAVE
+}
+
+TIMER(){
+    sleep 5s
+    maim -m 10 -u $HOME/.cache/screenshot.png && \
+        NOTIFY "Fullscreen Captured" && \
+        SAVE
+}
+
+declare -a options=(
+" Clipboard"
+" Selection"
+" Fullscreen"
+"祥 Timer"
+""
+)
+
+CHOICE=$(printf '%s\n' "${options[@]}" | dmenu -fn 'NotoSansMono Nerd Font:style=Medium:size=12' -nb "$dmenu_nbg" -nf "$dmenu_nfg" -sb "$dmenu_sbg" -sf "$dmenu_sfg" -c -l 10 -p 'Capture')
+FILE="$HOME/.cache/screenshot.png"
+
+case $CHOICE in
+    "${options[0]}")
+        CLIPBOARD
+        ;;
+    "${options[1]}")
+        SELECTION
+        ;;
+    "${options[2]}")
+        FULLSCREEN
+        ;;
+    "${options[3]}")
+        TIMER
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+
+

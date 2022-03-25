@@ -1,0 +1,19 @@
+#!/bin/bash
+# *-------------------------------------------------*
+# | Project Name    - comc
+# | Created On      - 03/06/22, 09:44:41 PM
+# | Author          - MD Fahim Abrar Saikat
+# | Author E-Mail   - saikat.cucse.52@gmail.com
+# | Author GitHub   - https://github.com/fa-saikat
+# *-------------------------------------------------*
+
+COMPILER="clang -Wall -lm -v"
+FILE="$1"
+OUTPUT=$(echo $1 | rev| cut -c 3- | rev )
+# echo $FILE
+# echo $OUTPUT
+
+# $COMPILER $FILE -o ../exe/"$OUTPUT" 2> ../log/"$OUTPUT".log
+$COMPILER $FILE -o ../exe/"$OUTPUT" 2> >(tee ../log/"$OUTPUT".log) # 2> >(tee -a ../log/"$OUTPUT".log >&2)
+./../exe/$OUTPUT | tee ../out/"$OUTPUT".out
+

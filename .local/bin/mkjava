@@ -1,0 +1,17 @@
+#!/bin/bash
+
+makeFiles(){
+    mkdir -p "$1"/{lib,src} && touch "${1}"/README.md
+    touch "${1}"/src/App.{java,class}
+}
+
+if [ -n "$1" ]; then
+    projectName="$1"
+else
+    echo "Project Name: " && read -r projectName
+fi
+
+makeFiles "${projectName}" && cd "${projectName}"/src/ || exit
+$EDITOR "${projectName}"/src/App.java
+$SHELL
+

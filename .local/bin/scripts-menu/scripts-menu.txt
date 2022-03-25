@@ -1,0 +1,2 @@
+../sm-send-to-mpv/send-to-mpv.sh
+../sm-wget-download/wget-download.sh

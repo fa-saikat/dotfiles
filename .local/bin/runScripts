@@ -1,0 +1,120 @@
+#!/bin/bash
+
+serenade_nbg="#2a2f33"
+serenade_nfg="#acb765"
+serenade_sbg="#2a2f33"
+serenade_sfg="#d76e6e"
+
+ayu_nbg="#1e2431"
+ayu_nfg="#979691"
+ayu_sbg="#424852"
+ayu_sfg="#d34748"
+
+nord_nbg="#2e3440"
+nord_nfg="#eceff4"
+nord_sbg="#3b4252"
+nord_sfg="#d76e6e"
+
+onedark_nbg="#282c33"
+onedark_nfg="#abb2bf"
+onedark_sbg="#272c35"
+onedark_sfg="#e06b74"
+
+gruvbox_nbg="#282828"
+gruvbox_nfg="#928374"
+gruvbox_sbg="#282828"
+gruvbox_sfg="#83a598"
+
+tomorrow_nbg="#27292c"
+tomorrow_nfg="#a7a8a7"
+tomorrow_sbg="#35383c"
+tomorrow_sfg="#d77c79"
+
+dmenu_nbg=$serenade_nbg
+dmenu_nfg=$serenade_nfg
+dmenu_sbg=$serenade_nbg
+dmenu_sfg=$serenade_sfg
+
+
+DIS(){
+    dis=$(cat /sys/class/backlight/intel_backlight/brightness)
+    dis_status=" Brightness: $dis"
+}
+
+MIC(){
+    mic=$(cat /sys/class/leds/hda::micmute/brightness)
+    mic_status=""
+    if [ $mic -ne 1 ]; then
+        mic_status=" ᴍɪᴄʀᴏᴘʜᴏɴᴇ ᴏɴ"
+    else
+        mic_status=" ᴍɪᴄʀᴏᴘʜᴏɴᴇ off"
+    fi
+}
+
+VOL(){
+    status=$(cat /sys/class/leds/hda::mute/brightness)
+    if [[ $status -ne 1 ]]; then
+        status=" ꜱᴏᴜɴᴅ ᴏɴ"
+    else
+        status=" ꜱᴏᴜɴᴅ ᴍᴜᴛᴇ"
+    fi
+}
+
+WIFI(){
+    wifi_status=$(cat /sys/class/net/wlp2s0/operstate)
+
+    case $wifi_status in
+        up) wifi_status=" ᴡɪꜰɪ ᴇɴᴀʙʟᴇᴅ" ;;
+        down) wifi_status="睊 ᴡɪꜰɪ ᴅɪꜱᴀʙʟᴇᴅ" ;;
+    esac
+}
+
+TOUCHPAD(){
+    declare -i ID
+    ID=`xinput list | grep -Eio '(touchpad|glidepoint)\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`
+    declare -i touchpad_state
+    touchpad_state=`xinput list-props $ID | grep 'Device Enabled' | awk '{print $4}'`
+    if [ $touchpad_state -eq 1 ]
+    then
+        touchpad_status="ﳶ ᴛᴏᴜᴄʜᴘᴀᴅ ᴇɴᴀʙʟᴇᴅ"
+    else
+        touchpad_status="ﳶᴛᴏᴜᴄʜᴘᴀᴅ ᴅɪꜱᴀʙʟᴇᴅ"
+    fi
+}
+
+TEMP(){
+    temp=$(sensors | grep temp1 | awk 'NR==1 {print $2}' | sed 's/+//g')
+    temp_status=" $temp"
+}
+
+DIS
+MIC
+VOL
+WIFI
+TOUCHPAD
+# TEMP
+
+prompt="dmenu"
+declare -a options=(
+"${mic_status}"
+"${status}"
+"${wifi_status}"
+"${touchpad_status}"
+"${dis_status}"
+"...................................."
+)
+choice=""
+
+choice=$(printf '%s\n' "${options[@]}" | $prompt -fn 'NotoSansMono Nerd Font:style=Medium:size=13' -nb "$dmenu_nbg" -nf "$dmenu_nfg" -sb "$dmenu_sbg" -sf "$dmenu_sfg" -c -l 10 -p 'Devices')
+case $choice in
+    "${options[0]}")
+        bash ~/.local/bin/toggle-settings/toggleMic ;;
+    "${options[1]}")
+        bash ~/.local/bin/toggle-settings/toggleVol ;;
+    "${options[2]}")
+        bash ~/.local/bin/toggle-settings/toggleWifi ;;
+    "${options[3]}")
+        bash ~/.local/bin/toggle-settings/toggleTouchpad ;;
+    *)
+        exit 1
+esac

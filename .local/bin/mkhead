@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# ░█▄█░█▀█░█░█░█▀▀░░░█░█░█▀▀░█▀█░█▀▄░█▀▀░█▀▄ Makes
+# ░█░█░█▀█░█▀▄░█▀▀░░░█▀█░█▀▀░█▀█░█░█░█▀▀░█▀▄ Simple
+# ░▀░▀░▀░▀░▀░▀░▀▀▀░░░▀░▀░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀ Header
+
+# Project Name   - mkhead
+# Created On     - 08/06/21, 10:58:01 AM
+# Author Name    - MD. Fahim Abrar Saikat
+# Author E-mail  - saikat.cucse.52@gmail.com
+# Author Github  - https://github.com/fa-saikat
+
+author="MD Fahim Abrar Saikat"
+mail="saikat.cucse.52@gmail.com"
+github="https://github.com/fa-saikat"
+path=$(pwd)
+day=$(date +"%D, %r")
+
+if [ -n  "$1" ]; then
+    filename="$1"
+else
+    echo "Enter filename: " && read filename
+fi
+
+info=$(
+echo "*-------------------------------------------------*"
+echo "| Project Name    - ${filename}"
+echo "| Created On      - ${day}"
+echo "| Author          - ${author}"
+echo "| Author E-Mail   - ${mail}"
+echo "| Author GitHub   - ${github}"
+echo "*-------------------------------------------------*"
+)
+
+echo "${info}" > $filename && $EDITOR $filename
+
+exit 0

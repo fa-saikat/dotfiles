@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# *-------------------------------------------------*
+# | Project Name    - Power
+# | Created On      - 02/05/22, 02:11:10 PM
+# | Author          - MD Fahim Abrar Saikat
+# | Author E-Mail   - saikat.cucse.52@gmail.com
+# | Author GitHub   - https://github.com/FA-Saikat
+# *-------------------------------------------------*
+
+serenade_nbg="#2a2f33"
+serenade_nfg="#acb765"
+serenade_sbg="#2a2f33"
+serenade_sfg="#d76e6e"
+
+ayu_nbg="#1e2431"
+ayu_nfg="#979691"
+ayu_sbg="#424852"
+ayu_sfg="#d34748"
+
+nord_nbg="#2e3440"
+nord_nfg="#eceff4"
+nord_sbg="#3b4252"
+nord_sfg="#d76e6e"
+
+onedark_nbg="#282c33"
+onedark_nfg="#abb2bf"
+onedark_sbg="#272c35"
+onedark_sfg="#e06b74"
+
+gruvbox_nbg="#282828"
+gruvbox_nfg="#928374"
+gruvbox_sbg="#282828"
+gruvbox_sfg="#83a598"
+
+tomorrow_nbg="#27292c"
+tomorrow_nfg="#a7a8a7"
+tomorrow_sbg="#35383c"
+tomorrow_sfg="#d77c79"
+
+dmenu_nbg=$serenade_nbg
+dmenu_nfg=$serenade_nfg
+dmenu_sbg=$serenade_nbg
+dmenu_sfg=$serenade_sfg
+
+
+declare -a options=(
+" Suspend"
+" Logout"
+" Restart"
+" Poweroff"
+""
+)
+
+choice=$(printf '%s\n' "${options[@]}" | dmenu -fn 'NotoSansMono Nerd Font:style=Medium:size=12' -nb "$dmenu_nbg" -nf "$dmenu_nfg" -sb "$dmenu_sbg" -sf "$dmenu_sfg" -c -l 10 -p 'Option')
+
+case $choice in
+    "${options[0]}")
+        systemctl suspend
+        ;;
+    "${options[1]}")
+        kill -9 -1
+        ;;
+    "${options[2]}")
+        reboot
+        ;;
+    "${options[3]}")
+        shutdown now
+        ;;
+    *)
+        exit 1
+esac
