@@ -73,7 +73,7 @@ FULLSCREEN(){
 }
 
 TIMER(){
-    sleep 5s
+    sleep 3s
     maim -m 10 -u $HOME/.cache/screenshot.png && \
         NOTIFY "Fullscreen Captured" && \
         SAVE

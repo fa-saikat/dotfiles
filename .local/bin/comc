@@ -14,6 +14,8 @@ OUTPUT=$(echo $1 | rev| cut -c 3- | rev )
 # echo $OUTPUT
 
 # $COMPILER $FILE -o ../exe/"$OUTPUT" 2> ../log/"$OUTPUT".log
+echo "$(tput bold setaf 1):: LOG$(tput sgr0)"
 $COMPILER $FILE -o ../exe/"$OUTPUT" 2> >(tee ../log/"$OUTPUT".log) # 2> >(tee -a ../log/"$OUTPUT".log >&2)
+echo "$(tput bold setaf 1):: Output$(tput sgr0)"
 ./../exe/$OUTPUT | tee ../out/"$OUTPUT".out
 
