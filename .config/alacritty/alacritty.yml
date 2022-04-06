@@ -1,7 +1,7 @@
 # Parts of this config were created by Derek Taylor, AKA DistroTube. The rest was created by Matt Weber aka The Linux Cast
 
 font:
-  size: 13
+  size: 12
   offset:
     y: 2
   normal:
@@ -62,7 +62,7 @@ schemes:
       white:   '#dfdfdf'
 
 
-
+  ### Onedark ###
   onedark: &onedark
     primary:
       background: '#282c34'
@@ -104,6 +104,51 @@ schemes:
       magenta: '0xc678dd'
       cyan:    '0x56b6c2'
       white:   '0x828791'
+
+
+  ### Custom ###
+  custom: &custom
+    primary:
+      background: '#27262e'
+      foreground: '#fcfcfc'
+      bright_foreground: '#fcfcfc'
+
+  # Normal colors
+    normal:
+      black:   '#26262f'
+      red:     '#fa7882'
+      green:   '#a8e1b3'
+      yellow:  '#face7c'
+      blue:    '#8dbdec'
+      magenta: '#db87ab'
+      cyan:    '#9bb5c4'
+      white:   '#ffffff'
+
+  # Bright colors
+    bright:
+      black:   '#26262f'
+      red:     '#fa7882'
+      green:   '#a8e1b3'
+      yellow:  '#face7c'
+      blue:    '#8dbdec'
+      magenta: '#db87ab'
+      cyan:    '#9bb5c4'
+      white:   '#ffffff'
+
+  # Dim colors
+  #
+  # If the dim colors are not set, they will be calculated automatically based
+  # on the `normal` colors.
+    dim:
+      black:   '#7f8c8d'
+      red:     '#b4565e'
+      green:   '#81a566'
+      yellow:  '#c8a76a'
+      blue:    '#5293c8'
+      magenta: '#b36cc8'
+      cyan:    '#4ba0aa'
+      white:   '#ffffff'
+
 
   ### Dracula ###
   dracula: &dracula
@@ -159,6 +204,7 @@ schemes:
       magenta: '#ff46b0'
       cyan:    '#59dffc'
       white:   '#e6e6d1'
+
 
   ### Gruvbox dark ###
   gruvbox-dark: &gruvbox-dark
@@ -223,6 +269,7 @@ schemes:
       cyan:    '#88b482'
       white:   '#bfddb2'
 
+
 ### Monokai ###
   monokai-pro: &monokai-pro
     # Default colors
@@ -252,6 +299,7 @@ schemes:
       cyan:    '#78DCE8'
       white:   '#FCFCFA'
 
+
   ### Nord ###
   nord: &nord
     # Default colors
@@ -280,6 +328,7 @@ schemes:
       magenta: '#B48EAD'
       cyan:    '#8FBCBB'
       white:   '#ECEFF4'
+
 
   ### Oceanic Next ###
   oceanic-next: &oceanic-next
@@ -315,6 +364,7 @@ schemes:
       cyan:    '#5fb3b3'
       white:   '#d8dee9'
 
+
   ### Solarized Light ###
   solarized-light: &solarized-light
     # Default colors
@@ -348,6 +398,7 @@ schemes:
       magenta: '#6c71c4' # violet
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
+
 
   ### Solarized Dark ###
   solarized-dark: &solarized-dark
@@ -383,6 +434,7 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
+
   ### Tomorrow Night ###
   tomorrow-night: &tomorrow-night
      # Default colors
@@ -416,6 +468,7 @@ schemes:
       magenta: '#b77ee0'
       cyan:    '#54ced6'
       white:   '#282a2e'
+
 
   ### moonfly ###
   moonfly: &moonfly
@@ -452,7 +505,6 @@ schemes:
       white:   '#e4e4e4'
 
 # Colors (PaperColor - Light)
-
   ### papercolor ###
   papercolor: &papercolor
 
@@ -488,7 +540,6 @@ schemes:
       white:   '0x005f87'
 
 # Colors (Tokyo Night)
-
   ### tokyo night ###
   tokyonight: &tokyonight
 # Default colors
@@ -628,7 +679,7 @@ schemes:
 # *solarized-light
 # *tomorrow-night
 
-colors: *serenade
+colors: *custom
 
 #######################################
 ##       END OF COLOR SCHEMES        ##

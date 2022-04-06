@@ -19,9 +19,6 @@ super + Home
 super + F2
     bash ~/.local/bin/sysact
 
-super + F7
-    bash ~/.local/bin/dmscripts
-
 super + F11
     bash ~/.local/bin/runScripts
 
@@ -32,24 +29,8 @@ super + F11
 super + comma
     sh $HOME/.local/bin/sm-emojies/emojies.sh
 
-# Rofi
-# super + r
-#     rofi -show drun
-
-# Pavucontrol
-# super + v
-#     pavucontrol
-
-# System
-# super + e; {w, f, p, s}
-#     {sh -e /home/saikat/.local/bin/WebApp.sh,thunar, pamac-manager, xfce4-settings-manager}
-
-# super + w
-#     sh -e /home/saikat/.local/bin/WebApp.sh
-
-# URxvt
-# alt + t
-# 	urxvt
+super + t
+    st
 
 # Xkill
 super + Escape
@@ -61,7 +42,7 @@ super + Escape
 
 #reload sxhkd:
 super + shift + s
-	pkill -USR1 -x sxhkd && dunstify SXHKD "Config Refreshed!" -i ~/.config/dunst/icons/preferences-desktop-locale.svg
+	pkill -USR1 -x sxhkd && dunstify SXHKD "Config Refreshed!"
 
 #################################################################
 # CONTROL + ALT KEYS
@@ -140,11 +121,11 @@ alt + Right
 # Scrot-full screen
 Print
     sh -e $HOME/.local/bin/utilities/scrnsht
-    # scrot '%Y-%m-%d-%s_screenshot_$wx$h.png' -q 90 -e 'mv $f /home/saikat/Pictures/ScreenShots' && dunstify SCREENSHOT "Screen Captured!" -i ~/.config/dunst/icons/preferences-desktop-locale.svg && paplay /home/saikat/.config/dunst/sounds/camera-shutter.oga
+    # scrot '%Y-%m-%d-%s_screenshot_$wx$h.png' -q 90 -e 'mv $f /home/saikat/Pictures/ScreenShots' && dunstify SCREENSHOT "Screen Captured!"
 
 # Scrot-cropped with clipboard
 shift + Print
-    scrot -q 90 -s -f '%Y-%m-%d-%s_screenshot_$wx$h.png' -e 'mv $f /home/saikat/Pictures/ScreenShots' && dunstify SCREENSHOT "Region Captured!" -i ~/.config/dunst/icons/preferences-desktop-locale.svg && paplay /home/saikat/.config/dunst/sounds/camera-shutter.oga
+    scrot -q 90 -s -f '%Y-%m-%d-%s_screenshot_$wx$h.png' -e 'mv $f /home/saikat/Pictures/ScreenShots' && dunstify SCREENSHOT "Region Captured!" && paplay /home/saikat/.config/dunst/sounds/camera-shutter.oga
 
     # scrot '%Y-%m-%d-%s_screenshot_$wx$h.png' -q 100 -s -f -e 'mv $f /home/saikat/pic/Screenshots/Cropped'
 
@@ -173,6 +154,7 @@ XF86AudioLowerVolume
 
 ctrl + F9
     amixer set Master 10%-
+
 #Mute
 XF86AudioMute
     amixer -D pulse set Master 1+ toggle
@@ -207,14 +189,12 @@ XF86AudioStop
 #Brightness up
 XF86MonBrightnessUp
     brightnessctl set +10
-
-
 ctrl + F12
     brightnessctl set +10
+
 #Brightness down
 XF86MonBrightnessDown
     brightnessctl set 10-
-
 ctrl + F11
     brightnessctl set 10-
 
@@ -232,4 +212,4 @@ ctrl + F11
 # Power menu
 #Picom Toggle
 ctrl + alt + o
-    ~/.config/picom/scripts/picom-toggle.sh && dunstify PICOM "Toggled Picom!" -i ~/.config/dunst/icons/preferences-desktop-locale.svg
+    ~/.config/picom/scripts/picom-toggle.sh && notify-send "PICOM" "Toggled Picom!"
