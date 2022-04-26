@@ -53,6 +53,7 @@ alias setbg="nitrogen --set-scaled --save"
 
 # neovim
 alias v="nvim"
+alias ov="kitty --detach --session ~/.config/kitty/session.conf"
 
 # Power Profile
 alias pp="powerprofilesctl"
@@ -99,8 +100,8 @@ fd(){
 
 # Fuzzy Edit
 ff(){
-    xdg-open "$(find ~/ -type f | fzf)"
-    # $EDITOR "$(find ~/ -type f | fzf)"
+    # xdg-open "$(find ~/ -type f | fzf)"
+    $EDITOR "$(find ~/ -type f | fzf)"
 }
 
 # Change & list dir
@@ -115,6 +116,13 @@ altercd() {
 # Browsing packages with additional info
 pkginfo(){
     paru -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'
+}
+
+# overview
+overview(){
+    du -h --max-depth=1 | sed -r '
+    $d; s/^([.0-9]+[KMGTPEZY]\t)\.\//\1/
+    ' | sort -hr | column
 }
 
 
