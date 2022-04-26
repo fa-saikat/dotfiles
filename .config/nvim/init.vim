@@ -20,10 +20,12 @@ endif
 " Vim-Plug Plugins
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/gruvbox-material'
 Plug 'b4skyx/serenade'
-Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim'
+Plug 'Mofiqul/dracula.nvim'
+Plug 'mhartington/oceanic-next'
 
 Plug 'godlygeek/tabular'
 Plug 'itchyny/lightline.vim'
