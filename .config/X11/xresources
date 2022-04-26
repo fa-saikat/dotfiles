@@ -9,12 +9,8 @@
 !  ░█░░░█░█░█░░░█░█░█▀▄░▀▀█
 !  ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
 
-! special
-! *.foreground:   #c7ccd1
-! *.background:   #1c2023
-! *.cursorColor:  #c7ccd1
-
-!! < SERENADE > !!
+! Defining colors for colorschemes
+! --SERENADE
 #define serenadefg #BFDDB2
 #define serenadebg #2A2F33
 #define serenadecc #BFDDB2
@@ -28,7 +24,7 @@
 #define serenade6 #88B482
 #define serenade7 #BFDDB2
 
-!! < NORD > !!
+! --NORD
 #define nordbg #D8DEE9
 #define nordfg #2E3440
 #define nordcc #434C5E
@@ -50,7 +46,7 @@
 #define nord14 #A3BE8C
 #define nord15 #B48EAD
 
-!! ONEDARK > !!
+! --ONEDARK
 #define onedarkbg #1E2127
 #define onedarkfg #ABB2BF
 #define onedarkcc #5C6370
@@ -72,7 +68,7 @@
 #define onedark14 #56B6C2
 #define onedark15 #FFFFFF
 
-!! < CUSTOM > !!
+! --CUSTOM
 #define custombg #27262e
 #define customfg #fcfcfc
 #define customcc #bdef94
@@ -94,29 +90,48 @@
 #define custom14 #4ba0aa
 #define custom15 #ffffff
 
+! --OcenicNext
+#define OcenicNext00 #1B2B34
+#define OcenicNext01 #343D46
+#define OcenicNext02 #4F5B66
+#define OcenicNext03 #65737E
+#define OcenicNext04 #A7ADBA
+#define OcenicNext05 #C0C5CE
+#define OcenicNext06 #CDD3DE
+#define OcenicNext07 #D8DEE9
+#define OcenicNext08 #EC5f67
+#define OcenicNext09 #F99157
+#define OcenicNext0A #FAC863
+#define OcenicNext0B #99C794
+#define OcenicNext0C #5FB3B3
+#define OcenicNext0D #6699CC
+#define OcenicNext0E #C594C5
+#define OcenicNext0F #AB7967
 
-*.foreground:   customfg
-*.background:   custombg
-*.cursorColor:  customcc
-*fading: 35
-*fadeColor: custom3
+! special
+*.foreground:   OcenicNext02
+*.background:   OcenicNext07
+*.cursorColor:  OcenicNext02
+*fading:        35
+*fadeColor:     OcenicNext00
 
-*.color0: custom0
-*.color1: custom1
-*.color2: custom2
-*.color3: custom3
-*.color4: custom4
-*.color5: custom5
-*.color6: custom6
-*.color7: custom7
-*.color8: custom8
-*.color9: custom9
-*.color10: custom10
-*.color11: custom11
-*.color12: custom12
-*.color13: custom13
-*.color14: custom14
-*.color15: custom15
+*.color0:       OcenicNext00
+*.color1:       OcenicNext08
+*.color2:       OcenicNext0B
+*.color3:       OcenicNext0A
+*.color4:       OcenicNext0D
+*.color5:       OcenicNext0E
+*.color6:       OcenicNext0C
+*.color7:       OcenicNext05
+
+*.color8:       OcenicNext03
+*.color9:       OcenicNext08
+*.color10:      OcenicNext0B
+*.color11:      OcenicNext0A
+*.color12:      OcenicNext0D
+*.color13:      OcenicNext0E
+*.color14:      OcenicNext0C
+*.color15:      OcenicNext07
 
 !  ░█▀▀░█▀█░█▀█░▀█▀░█▀▀
 !  ░█▀▀░█░█░█░█░░█░░▀▀█
