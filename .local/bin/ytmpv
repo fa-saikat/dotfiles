@@ -1,0 +1,19 @@
+# *-------------------------------------------------*
+# | Project Name    - ytmpv
+# | Created On      - 06/26/22, 09:12:28 PM
+# | Author          - MD Fahim Abrar Saikat
+# | Author E-Mail   - saikat.cucse.52@gmail.com
+# | Author GitHub   - https://github.com/fa-saikat
+# *-------------------------------------------------*
+
+if [ -n  "$1" ]; then
+    Link="$1"
+else
+    printf "$(tput bold setaf 3):: Enter Link:$(tput sgr0) " & read Link
+fi
+yt-dlp -F ${Link} | grep "avc*" | awk 'NR > 5 {print $1"\t"$10}'
+
+printf "$(tput bold setaf 2):: Video:$(tput sgr0) " && read Video
+# printf "$(tput bold setaf 2):: Audio:$(tput sgr0) " && read Audio
+
+mpv --ytdl-format=${Video}+251 ${Link}
