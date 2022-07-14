@@ -24,9 +24,36 @@
 	vnoremap < <gv
 	vnoremap > >gv
 
+" GitGutter
+	nmap ) <Plug>(GitGutterNextHunk)
+	nmap ( <Plug>(GitGutterPrevHunk)
+
+" Goyo
+	noremap <leader>g :Goyo<CR>
+
+"Buffer Navigation
+	noremap <Tab> :bn<CR>
+	noremap <S-Tab> :bp<CR>
+	noremap <C-t> :tabnew<CR>
+	noremap <C-w> :Bclose<CR>
+
+" UndoTree
+	nnoremap <F5> :UndotreeToggle<CR>
+
+" Limelight
+    map <Leader>ll :Limelight!!<CR>
+
 " Replace all is aliased to S.
 	" nnoremap S :%s//g<Left><Left>
 	nnoremap S *:%s///g<left><left>
 
 " Sort paragrapgh
     vnoremap <leader>so :'<'>sort<CR>
+
+" Tabularize
+    " nmap <Leader>a= :Tabularize /=<CR>
+    " vmap <Leader>a= :Tabularize /=<CR>
+    " nmap <Leader>a: :Tabularize /:\zs<CR>
+    " vmap <Leader>a: :Tabularize /:\zs<CR>
+
+

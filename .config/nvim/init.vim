@@ -104,18 +104,12 @@ call plug#end()
     augroup END
 
 " GitGutter
-	nmap ) <Plug>(GitGutterNextHunk)
-	nmap ( <Plug>(GitGutterPrevHunk)
 	let g:gitgutter_enabled = 1
 	let g:gitgutter_map_keys = 0
 	let g:gitgutter_highlight_linenrs = 1
 
 " Goyo
-	noremap <leader>g :Goyo<CR>
     let g:goyo_width = 110
-
-" Limelight
-    map <Leader>ll :Limelight!!<CR>
 
 
 " Limelight goyo integation
@@ -123,27 +117,12 @@ call plug#end()
     autocmd! User GoyoLeave Limelight!
 
 
-"Buffer Navigation
-	noremap <Tab> :bn<CR>
-	noremap <S-Tab> :bp<CR>
-	noremap <C-t> :tabnew<CR>
-	" noremap <C-w> :tabclose<CR>
-
 " Tab Ident with |
 	" set list lcs=tab:\|\ ""
 
-" UndoTree
-	nnoremap <F5> :UndotreeToggle<CR>
 
 " Files on ctrl+p
 	nnoremap <C-p> :Files<CR>
 
 " Sudo on files that require root permission
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
-" Tabularize
-    " nmap <Leader>a= :Tabularize /=<CR>
-    " vmap <Leader>a= :Tabularize /=<CR>
-    " nmap <Leader>a: :Tabularize /:\zs<CR>
-    " vmap <Leader>a: :Tabularize /:\zs<CR>
-

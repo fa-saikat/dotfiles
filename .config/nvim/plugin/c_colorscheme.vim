@@ -29,5 +29,5 @@
     let g:indentLine_bgcolor_gui = '#cc608c75'
 
 " Set Colorscheme
-    colorscheme OceanicNext
-    let g:lightline.colorscheme = 'oceanicnext'
+    colorscheme onedark
+    let g:lightline.colorscheme = 'onedark'

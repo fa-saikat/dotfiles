@@ -22,10 +22,10 @@
 	set nowritebackup
 	set undodir=~/.nvim/undodir
 	set undofile
-	" set emoji                                               " enable emojis
-	" set termguicolors                                       " Opaque Background
+	" set emoji
+	" set termguicolors " Opaque Background
     " set lbr
-    " set tw=80
+    set tw=80
 
 
 " vim-interface
