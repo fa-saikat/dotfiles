@@ -16,6 +16,7 @@ alias ll="lsd -l"
 alias lla="lsd -lA"
 alias ls="lsd"
 alias lt="lsd --tree"
+alias l.="lsd -A | egrep '^\.'"
 
 # Copying with rsync
 alias yy="rsync -vP"
@@ -38,6 +39,7 @@ alias yt="ytfzf -tf --preview-side=right"
 alias yta="yt-dlp --extract-audio --audio-format "
 alias ytv-best="yt-dlp -f bestvideo+bestaudio "
 alias ytv-list="yt-dlp -f bestvideo+bestaudio --yes-playlist"
+alias ytf="yt-dlp -F"
 
 # Htop
 alias htop="htop --tree"
@@ -118,13 +120,6 @@ pkginfo(){
     paru -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'
 }
 
-# overview
-overview(){
-    du -h --max-depth=1 | sed -r '
-    $d; s/^([.0-9]+[KMGTPEZY]\t)\.\//\1/
-    ' | sort -hr | column
-}
-
 
 # ░▀█▀░█░█░█▀▀░█▄█░█▀▀░█▀▀
 # ░░█░░█▀█░█▀▀░█░█░█▀▀░▀▀█
@@ -152,3 +147,7 @@ overview(){
 # obraun
 # tjkirch
 # sorin
+# sunrise
+# sporty_256
+# humza
+# oxide

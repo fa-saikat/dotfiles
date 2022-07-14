@@ -1,18 +1,11 @@
-# ░█▀▀░█░█░█░█░█░█░█▀▄
-# ░▀▀█░▄▀▄░█▀█░█▀▄░█░█
-# ░▀▀▀░▀░▀░▀░▀░▀░▀░▀▀░
-#################################################################
-# KEYBOARD BINDINGS FOR ANY TWM
-#################################################################
+# ==============================================================
+# ========================= SXHKD ==============================
+# ======== Keybindings for any tiling Window Manager ===========
+# ==============================================================
 
-# ░█▀▀░█▀▀░█▀█░█▀▀░█▀▄░█▀█░█░░
-# ░█░█░█▀▀░█░█░█▀▀░█▀▄░█▀█░█░░
-# ░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░▀░▀░▀▀▀
-
-
-#################################################################
-# SUPER + FUNCTION KEYS
-#################################################################
+# ==============================================================
+# ====================== SUPER + KEYS ==========================
+# ==============================================================
 super + Home
     bash $HOME/.local/bin/scripts-menu/scripts-menu.sh
 
@@ -29,8 +22,12 @@ super + F11
 super + comma
     sh $HOME/.local/bin/sm-emojies/emojies.sh
 
+# Terminal Emulators
+# super + t; {k, s}
+    # {kitty, st}
+
 super + t
-    st
+    kitty
 
 # Xkill
 super + Escape
@@ -58,7 +55,7 @@ super + shift + s
 
 #Wallpaper trash
 alt + t
-    variety -t
+    st
 
 #Wallpaper next
 alt + n
@@ -114,21 +111,28 @@ alt + Right
 #     xfce4-taskmanager
 
 
-# ░█▀▀░█▀▀░█▀▄░█▀▀░█▀▀░█▀█░█▀▀░█░█░█▀█░▀█▀
-# ░▀▀█░█░░░█▀▄░█▀▀░█▀▀░█░█░▀▀█░█▀█░█░█░░█░
-# ░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░▀▀▀░░▀░
+# ==============================================================
+# ======================== SCREENSHOTS =========================
+# ==============================================================
 
-# Scrot-full screen
+# Fullscreen
 Print
-    sh -e $HOME/.local/bin/utilities/scrnsht
-    # scrot '%Y-%m-%d-%s_screenshot_$wx$h.png' -q 90 -e 'mv $f /home/saikat/Pictures/ScreenShots' && dunstify SCREENSHOT "Screen Captured!"
+    maim -m 10 -u $HOME/Pictures/ScreenShots/$(date +%s).png && \
+    notify-send "Screenshot Captured!"
 
-# Scrot-cropped with clipboard
+# Selection to clipboard
+ctrl + Print
+    maim -m 10 -u -s | xclip -sel c -t image/png && \
+    notify-send "Copid to clipboard!"
+
+# Selection
 shift + Print
-    scrot -q 90 -s -f '%Y-%m-%d-%s_screenshot_$wx$h.png' -e 'mv $f /home/saikat/Pictures/ScreenShots' && dunstify SCREENSHOT "Region Captured!" && paplay /home/saikat/.config/dunst/sounds/camera-shutter.oga
+    maim -m 10 -u -s $HOME/Pictures/ScreenShots/$(date +%s).png && \
+    notify-send "Screenshot Captured!"
 
-    # scrot '%Y-%m-%d-%s_screenshot_$wx$h.png' -q 100 -s -f -e 'mv $f /home/saikat/pic/Screenshots/Cropped'
-
+# Promt
+ctrl + alt+ Print
+    sh -e $HOME/.local/bin/utilities/scrnsht
 
 #################################################################
 #     FUNCTION KEYS
@@ -137,66 +141,58 @@ shift + Print
 #xfce4-terminal dropdown
 
 
-#################################################################
-#     MULTIMEDIA KEYS
-#################################################################
+# ==============================================================
+# =====================  MULTIMEDIA KEYS  ======================
+# ==============================================================
 
-#Raises volume
-XF86AudioRaiseVolume
-    amixer set Master 10%+
+# Playerctl works for Pragha, Spotify and others
+# Delete the line for playerctl if you want to use mpc
+# and replace it with the corresponding code mpc works
+# for e.g.ncmpcpp
 
-ctrl + F10
-    amixer set Master 10%+
-
-#Lowers volume
-XF86AudioLowerVolume
-    amixer set Master 10%-
-
-ctrl + F9
-    amixer set Master 10%-
-
-#Mute
+# Volume Mute
 XF86AudioMute
     amixer -D pulse set Master 1+ toggle
 
-ctrl + F8
-    amixer -D pulse set Master 1+ toggle
-#Playerctl works for Pragha, Spotify and others
-#Delete the line for playerctl if you want to use mpc
-#and replace it with the corresponding code
-#mpc works for e.g.ncmpcpp
-#mpc toggle
-#mpc next
-#mpc prev
-#mpc stop
+shift + XF86AudioMicMute
+    amixer set Master toggle
 
-#PLAY
+# Mic Mute
+XF86AudioMicMute
+    amixer set Capture toggle
+
+# Volume Up
+XF86AudioRaiseVolume
+    amixer set Master 10%+
+
+# Volume Down
+XF86AudioLowerVolume
+    amixer set Master 10%-
+
+# PLAY
 XF86AudioPlay
     playerctl play-pause
 
-#Next
+# Next
 XF86AudioNext
     playerctl next
 
-#previous
+# Previous
 XF86AudioPrev
     playerctl previous
 
-#Stop
+# Stop
 XF86AudioStop
     playerctl stop
 
-#Brightness up
+# Brightness up
 XF86MonBrightnessUp
     brightnessctl set +10
-ctrl + F12
-    brightnessctl set +10
 
-#Brightness down
+# Brightness down
 XF86MonBrightnessDown
     brightnessctl set 10-
-ctrl + F11
-    brightnessctl set 10-
+
 
 #################################################################
 #################################################################
@@ -204,12 +200,10 @@ ctrl + F11
 #################################################################
 #################################################################
 
-#################################################################
-# CTRL + ALT KEYS
-#################################################################
+# ==============================================================
+# ===================  ctrl + alt + KEYS  ======================
+# ==============================================================
 
-
-# Power menu
-#Picom Toggle
+# Toggle picom
 ctrl + alt + o
     ~/.config/picom/scripts/picom-toggle.sh && notify-send "PICOM" "Toggled Picom!"

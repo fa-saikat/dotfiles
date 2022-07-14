@@ -9,7 +9,7 @@
 !  ░█░░░█░█░█░░░█░█░█▀▄░▀▀█
 !  ░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
 
-! Defining colors for colorschemes
+! Defining colors
 ! --SERENADE
 #define serenadefg #BFDDB2
 #define serenadebg #2A2F33
@@ -69,26 +69,27 @@
 #define onedark15 #FFFFFF
 
 ! --CUSTOM
-#define custombg #27262e
-#define customfg #fcfcfc
-#define customcc #bdef94
+#define custombg #0b0f10
+#define customfg #c5c8c9
+#define customcc #de8f78
 
-#define custom0 #26262f
-#define custom1 #fa7882
-#define custom2 #a8e1b3
-#define custom3 #face7c
-#define custom4 #8dbdec
-#define custom5 #db87ab
-#define custom6 #9bb5c4
-#define custom7 #ffffff
-#define custom8 #7f8c8d
-#define custom9 #b4565e
-#define custom10 #81a566
-#define custom11 #c8a76a
-#define custom12 #5293c8
-#define custom13 #b36cc8
-#define custom14 #4ba0aa
-#define custom15 #ffffff
+#define custom0 #0b0f10
+#define custom1 #ee6a70
+#define custom2 #96d6b0
+#define custom3 #ffb29b
+#define custom4 #7ba5dd
+#define custom5 #cb92f2
+#define custom6 #7fc8db
+#define custom7 #c5c8c9
+#define custom8 #0b0f10
+#define custom9 #ee6a70
+#define custom10 #96d6b0
+#define custom11 #ffb29b
+#define custom12 #7ba5dd
+#define custom13 #cb92f2
+#define custom14 #7fc8db
+#define custom15 #c5c8c9
+
 
 ! --OcenicNext
 #define OcenicNext00 #1B2B34
@@ -109,29 +110,28 @@
 #define OcenicNext0F #AB7967
 
 ! special
-*.foreground:   OcenicNext02
-*.background:   OcenicNext07
-*.cursorColor:  OcenicNext02
+*.foreground:   customfg
+*.background:   custombg
+*.cursorColor:  customcc
 *fading:        35
-*fadeColor:     OcenicNext00
+*fadeColor:     custom10
 
-*.color0:       OcenicNext00
-*.color1:       OcenicNext08
-*.color2:       OcenicNext0B
-*.color3:       OcenicNext0A
-*.color4:       OcenicNext0D
-*.color5:       OcenicNext0E
-*.color6:       OcenicNext0C
-*.color7:       OcenicNext05
-
-*.color8:       OcenicNext03
-*.color9:       OcenicNext08
-*.color10:      OcenicNext0B
-*.color11:      OcenicNext0A
-*.color12:      OcenicNext0D
-*.color13:      OcenicNext0E
-*.color14:      OcenicNext0C
-*.color15:      OcenicNext07
+*.color0:       custom0
+*.color1:       custom1
+*.color2:       custom2
+*.color3:       custom3
+*.color4:       custom4
+*.color5:       custom5
+*.color6:       custom6
+*.color7:       custom7
+*.color8:       custom8
+*.color9:       custom9
+*.color10:      custom10
+*.color11:      custom11
+*.color12:      custom12
+*.color13:      custom13
+*.color14:      custom14
+*.color15:      custom15
 
 !  ░█▀▀░█▀█░█▀█░▀█▀░█▀▀
 !  ░█▀▀░█░█░█░█░░█░░▀▀█
