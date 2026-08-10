@@ -1,0 +1,205 @@
+# ==============================================================
+# ========================= SXHKD ==============================
+# ======== Keybindings for any tiling Window Manager ===========
+# ==============================================================
+super + r
+    rofi -show drun
+
+super + n
+    ${HOME}/.local/bin/dmenu-emoji.sh
+
+super + o
+    ${DOTFILES_HOME}/bin/dmenu-monitor.sh
+
+super + shift + o
+	${DOTFILES_HOME}/bin/dmenu-resolution.sh
+
+# switch keyboard switch keyboard layouit
+super + i
+	bash -x switch-keyboard.sh > /tmp/sxhkd.log 2>&1
+	# bash -x $DOTFILES_HOME/bin/switch-keyboard.sh > /tmp/sxhkd.log 2>&1
+
+super + x
+    bash $HOME/.local/bin/dmenu-power.sh
+
+# Xkill
+super + Escape
+    xkill
+
+################################################################
+# SUPER + SHIFT KEYS
+#################################################################
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd && dunstify SXHKD "Config Refreshed!"
+
+#################################################################
+# CONTROL + ALT KEYS
+#################################################################
+
+
+#Keyboard dependent
+
+
+#################################################################
+# ALT + ... KEYS
+#################################################################
+
+# Krunner
+alt + space
+  udiskie-dmenu -fn "Terminus:style=Bold:size=14" \
+                -nb "#141b1e" \
+                -nf "#e57474" \
+                -sb "#141b1e" \
+                -sf "#8ccf7e" \
+                -l 10
+
+#Wallpaper trash
+# alt + t
+    # st
+
+#################################################################
+#VARIETY KEYS WITH PYWAL
+#################################################################
+
+#Wallpaper trash
+#alt + shift + t
+#    variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+##Wallpaper next
+#alt + shift + n
+#    variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+##Wallpaper previous
+#alt + shift + p
+#    variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+##Wallpaper favorite
+#alt + shift + f
+#    variety -f && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+##Wallpaper update
+#alt + shift + u
+#    wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#################################################################
+# CONTROL + SHIFT KEYS
+#################################################################
+
+# TaskManager
+# ctrl + shift + Escape
+#     xfce4-taskmanager
+
+
+# ==============================================================
+# ======================== SCREENSHOTS =========================
+# ==============================================================
+
+# Fullscreen
+Print
+    maim -m 10 -u $HOME/Pictures/Screenshots/$(date +%s).png && \
+    notify-send "Screenshot Captured!"
+
+# Selection to clipboard
+ctrl + Print
+    maim -m 10 -u -s | xclip -sel c -t image/png && \
+    notify-send "Copid to clipboard!"
+
+# Selection
+shift + Print
+    maim -m 10 -u -s $HOME/Pictures/Screenshots/$(date +%s).png && \
+    notify-send "Screenshot Captured!"
+
+# Promt
+ctrl + alt+ Print
+    sh -e $HOME/.local/bin/utilities/scrnsht
+
+#################################################################
+#     FUNCTION KEYS
+#################################################################
+
+#xfce4-terminal dropdown
+
+
+# ==============================================================
+# =====================  MULTIMEDIA KEYS  ======================
+# ==============================================================
+
+# Playerctl works for Pragha, Spotify and others
+# Delete the line for playerctl if you want to use mpc
+# and replace it with the corresponding code mpc works
+# for e.g.ncmpcpp
+
+# Volume Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+shift + XF86AudioMicMute
+    amixer set Master toggle
+
+# Mic Mute
+XF86AudioMicMute
+    amixer set Capture toggle
+
+# Volume Up
+XF86AudioRaiseVolume
+    amixer set Master 10%+
+
+# Volume Down
+XF86AudioLowerVolume
+    amixer set Master 10%-
+
+# PLAY
+XF86AudioPlay
+    playerctl play-pause
+
+# Next
+XF86AudioNext
+    playerctl next
+
+# Previous
+XF86AudioPrev
+    playerctl previous
+
+# Stop
+XF86AudioStop
+    playerctl stop
+
+# Brightness up
+XF86MonBrightnessUp
+    brightnessctl set +1%
+
+# Brightness down
+XF86MonBrightnessDown
+    brightnessctl set 5%-
+
+# Brightness up
+super + F12
+    brightnessctl set +10%
+
+# Brightness down
+super + shift + F12
+    brightnessctl set 10%-
+
+# Nightmode 
+super + XF86AudioLowerVolume
+    bash $HOME/.local/bin/nightmode.sh down
+
+super + XF86AudioRaiseVolume
+    bash $HOME/.local/bin/nightmode.sh up
+
+#################################################################
+#################################################################
+##################   DESKTOP SPECIFIC    ########################
+#################################################################
+#################################################################
+
+# ==============================================================
+# ===================  ctrl + alt + KEYS  ======================
+# ==============================================================
+
+# Toggle picom
+ctrl + alt + o
+    ~/.config/picom/scripts/picom-toggle.sh && notify-send "PICOM" "Toggled Picom!"
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+while read file
+do
+    case "$1" in
+        w) nitrogen --set-scaled --save $file ;;
+        d) rm $file ;;
+    esac
+done
+

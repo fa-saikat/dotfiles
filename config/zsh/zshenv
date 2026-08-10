@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+source $HOME/.local/share/dotfiles/config/shell/profile

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1488955845049151-1</unique-id>
+	<command>st</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>meld</icon>
+	<name>Compare</name>
+	<submenu></submenu>
+	<unique-id>1492232362549799-1</unique-id>
+	<command>meld %F</command>
+	<description></description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>system-file-manager-root</icon>
+	<name>Open folder as root</name>
+	<submenu></submenu>
+	<unique-id>1493475601060449-3</unique-id>
+	<command>pkexec thunar %f</command>
+	<description></description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>archive-extract</icon>
+	<name>Extract here</name>
+	<submenu></submenu>
+	<unique-id>1489091300385082-4</unique-id>
+	<command>tar xjf %n</command>
+	<description></description>
+	<range></range>
+	<patterns>*.tar.bz2;*.tbz2</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>preferences-desktop-wallpaper</icon>
+	<name>Set as wallpaper (Primary Monitor)</name>
+	<submenu>Set as background</submenu>
+	<unique-id>1721500343017935-2</unique-id>
+	<command>nitrogen --head=0 --set-scaled %f</command>
+	<description>Set as wallpaper</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>preferences-desktop-wallpaper</icon>
+	<name>Set as wallpaper (Secondary Monitor)</name>
+	<submenu>Set as background</submenu>
+	<unique-id>1721500270426469-1</unique-id>
+	<command>nitrogen --head=1 --set-scaled %f</command>
+	<description>Set as wallpaper on second monitor</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>preferences-desktop-wallpaper</icon>
+	<name>Set as wllapaper (Blurred)</name>
+	<submenu>Set as background</submenu>
+	<unique-id>1721504279556038-3</unique-id>
+	<command>convert %f -blur 0x6 &quot;$HOME/.cache/desktopbg&quot;; nitrogen --save --head=0 --set-scaled &quot;$HOME/.cache/desktopbg&quot;</command>
+	<description>Set blurred version of  the wallpaper</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>blurfx</icon>
+	<name>Add blur effect</name>
+	<submenu>Image options</submenu>
+	<unique-id>1721503141648145-2</unique-id>
+	<command>convert %f -blur 0x6 &quot;blurred-$(basename %f)&quot;</command>
+	<description>Add blur effect to images</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>system-reboot</icon>
+	<name>Convert webp to jpg</name>
+	<submenu></submenu>
+	<unique-id>1510662686010963-2</unique-id>
+	<command>convert %f -quality 100 `basename %f .webp`.jpg</command>
+	<description>Convert webp to jpg</description>
+	<range></range>
+	<patterns>*.webp</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>gksu-root-terminal</icon>
+	<name>Ownership to root</name>
+	<submenu>Ownership</submenu>
+	<unique-id>1526631155250282-8</unique-id>
+	<command>gnome-keyring-daemon -r -d;gksu &quot;chown -R root:root %F&quot;</command>
+	<description>Change permissions to root</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>system-switch-user</icon>
+	<name>Ownership to user</name>
+	<submenu>Ownership</submenu>
+	<unique-id>1526631178674034-9</unique-id>
+	<command>gnome-keyring-daemon -r -d;gksu &quot;chown -R $USER:$USER %F&quot;</command>
+	<description>Change permissions to user</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>application-x-executable</icon>
+	<name>Make executable</name>
+	<submenu></submenu>
+	<unique-id>1526670239648084-2</unique-id>
+	<command>chmod +x %f</command>
+	<description>Make a file execuble</description>
+	<range></range>
+	<patterns>*.sh</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>insert-link-symbolic</icon>
+	<name>In home</name>
+	<submenu>Symlink</submenu>
+	<unique-id>1526631663081446-14</unique-id>
+	<command>ln -sfn %f &quot;$HOME/$(basename %f)&quot;</command>
+	<description>Softlink between two files or directories</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>insert-link-symbolic</icon>
+	<name>In config</name>
+	<submenu>Symlink</submenu>
+	<unique-id>1526631663081446-14</unique-id>
+	<command>ln -sfn %f &quot;$XDG_CONFIG_HOME/$(basename %f)&quot;</command>
+	<description>Softlink between two files or directories</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>link</icon>
+	<name>In PATH</name>
+	<submenu>Symlink</submenu>
+	<unique-id>1721750222391156-2</unique-id>
+	<command>ln -sfn %f &quot;$HOME/.local/bin/$(basename %f)&quot;</command>
+	<description>Create symlink in local/bin</description>
+	<range>*</range>
+	<patterns>*.sh</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>link</icon>
+	<name>In source</name>
+	<submenu>Symlink</submenu>
+	<unique-id>1721750222391156-2</unique-id>
+	<command>ln -sfn %f &quot;$HOME/.local/src/$(basename %f)&quot;</command>
+	<description>Create symlink in local/src</description>
+	<range>*</range>
+	<patterns>dmenu;dwm;st;slstatus;slock</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>insert-link-symbolic</icon>
+	<name>In home (Hidden)</name>
+	<submenu>Symlink</submenu>
+	<unique-id>1526631663081446-14</unique-id>
+	<command>ln -sfn %f &quot;$HOME/.$(basename %f)&quot;</command>
+	<description>Softlink between two files or directories</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>transform-scale-vertical</icon>
+	<name>Combine vertically</name>
+	<submenu>Image options</submenu>
+	<unique-id>1721749056947720-1</unique-id>
+	<command>convert -append %F output.jpg</command>
+	<description>Append images top to bottom</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>transform-scale-horizontal</icon>
+	<name>Combine horizontally</name>
+	<submenu>Image options</submenu>
+	<unique-id>1721749131666830-2</unique-id>
+	<command>convert +append %F output.jpg</command>
+	<description>Append images left to right </description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+</actions>

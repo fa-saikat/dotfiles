@@ -1,0 +1,68 @@
+#!/usr/bin/env zsh
+# Shell configuration & executing commands
+
+setopt AUTO_PUSHD               # Push the current directory visited on the stack.
+setopt PUSHD_IGNORE_DUPS        # Do not store duplicates in the stack.
+setopt PUSHD_SILENT             # Do not print the directory stack after pushd or popd.
+
+# autoload -U compinit; compinit
+
+# Aliases
+[[ -f $XDG_CONFIG_HOME/shell/aliasrc ]] && . $XDG_CONFIG_HOME/shell/aliasrc 
+
+# Completion system
+source $ZDOTDIR/zcompletionrc
+
+
+# Editing commands in editor
+autoload -Uz edit-command-line;
+zle -N edit-command-line
+# bindkey -M vicmd '^x^e' edit-command-line  # Vi-mode
+bindkey '^x^e' edit-command-line        # Standard mode
+
+
+# Vi-mode 
+# bindkey -v
+# export KEYTIMEOUT=1
+
+# Vim mapping in completion
+# zmodload zsh/complist           # Access to keymap 'menuselect', load before compinit
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+
+# Vi-mode text objects
+# autoload -Uz select-bracketed select-quoted
+# zle -N select-quoted
+# zle -N select-bracketed
+# for km in viopp visual; do
+#   bindkey -M $km -- '-' vi-up-line-or-history
+#   for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}; do
+#     bindkey -M $km $c select-quoted
+#   done
+#   for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+#     bindkey -M $km $c select-bracketed
+#   done
+# done
+
+# Vi-mode surrounding
+# autoload -Uz surround
+# zle -N delete-surround surround
+# zle -N add-surround surround
+# zle -N change-surround surround
+# bindkey -M vicmd cs change-surround
+# bindkey -M vicmd ds delete-surround
+# bindkey -M vicmd ys add-surround
+# bindkey -M visual S add-surround
+
+
+# Syntax highlightinh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Prompt
+# fpath=($ZDOTDIR/zpromptrc $fpath)
+# autoload -Uz zpromptrc; zpromptrc
+# autoload -U colors && colors # Load colors
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+source $ZDOTDIR/zpromptrc

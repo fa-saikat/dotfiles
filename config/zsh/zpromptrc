@@ -1,0 +1,56 @@
+#!/usr/bin/env zsh
+
+zsh_prompt() {
+    autoload -U colors && colors # Load colors
+    PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+}
+
+cursor_mode() {
+    # See https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html for cursors
+    # Set cursor style (DECSCUSR), VT520.
+    # 0  ⇒  blinking block.
+    # 1  ⇒  blinking block (default).
+    # 2  ⇒  steady block.
+    # 3  ⇒  blinking underline.
+    # 4  ⇒  steady underline.
+    # 5  ⇒  blinking bar, xterm.
+    # 6  ⇒  steady bar, xterm.
+    cursor_block='\e[2 q'
+    cursor_beam='\e[3 q'
+
+    function zle-keymap-select {
+        if [[ ${KEYMAP} == vicmd ]] ||
+            [[ $1 = 'block' ]]; then
+            echo -ne $cursor_block
+        elif [[ ${KEYMAP} == main ]] ||
+            [[ ${KEYMAP} == viins ]] ||
+            [[ ${KEYMAP} = '' ]] ||
+            [[ $1 = 'beam' ]]; then
+            echo -ne $cursor_beam
+        fi
+    }
+
+    zle-line-init() {
+        echo -ne $cursor_beam
+    }
+
+# If you have a problem with End and Home key
+#    zle-line-init () {
+#       # Default zle-line-init
+#       if (( $+terminfo[smkx] ))
+#       then
+#               echoti smkx
+#       fi
+#       zle editor-info
+#
+#       # Modify cursor!
+#       zle -K viins
+#   }
+
+    zle -N zle-keymap-select
+    zle -N zle-line-init
+}
+
+zsh_prompt
+cursor_mode
+

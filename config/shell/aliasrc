@@ -1,0 +1,198 @@
+#!/usr/bin/env bash
+# $XDG_CONFIG_HOME/shell 
+#
+# Shell aliases 
+# Source in SHELLRC
+
+# Directory listing
+# alias l.="lsd -A | egrep '^\.'"
+if [[ -x /usr/bin/lsd ]]; then
+    alias l.="lsd -l .*(^/)"
+    alias la="lsd -lA"
+    alias ll="lsd -l"
+    alias lh="lsd -d .*"
+    alias ls="lsd"
+    alias lt="lsd --tree"
+elif [[ -x /usr/bin/exa ]]; then 
+    alias l.="exa --icons -A .*"
+    alias la="exa --icons --group-directories-first -a"
+    alias ll="exa --icons --group-directories-first -l"
+    alias lh="exa --icons --group-directories-first -d .*"
+    alias ls="exa --icons --group-directories-first"
+    alias lt="exa --icons --group-directories-first --tree"
+else
+    # alias l.="ls -l .*(^/)"
+    alias la="ls -lhA --group-directories-first"
+    alias ll="ls -lh --group-directories-first"
+    alias ls="ls"
+    alias lt="ls --tree"
+fi
+
+if [[ -x /usr/bin/batcat ]]; then
+    alias bat="batcat"
+fi
+
+
+# Directory stacks
+alias ..='cd ..'
+alias ...='cd ../..'
+alias d='dirs -v'
+
+for directory in {1..9}; do 
+    alias "$directory"="cd +${directory}";
+    unset directory
+done
+
+
+# Editor
+# Use neovim for vim if present.
+# [ -x "$(command -v nvim)" ] && alias v="nvim" vimdiff="nvim -d"
+# if [[ ! `command -v nvim &> /dev/null` ]]
+# then
+#     alias v="nvim"
+# else
+#     alias v="vim"
+# fi
+# alias vv="sudoedit"
+
+alias big="expac -H M '%m\t%n' | sort -h | nl"
+alias bupskel='cp -Rf /etc/skel ~/.skel-backup-$(date +%Y.%m.%d-%H.%M.%S)'
+
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+alias clock="tty-clock -tcsf '%A, %B %d'"
+
+alias df='df -h'
+alias duf='duf -hide special'
+
+alias downgrada="sudo downgrade --ala-url https://ant.seedhost.eu/arcolinux/"
+
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias figlet="figlet -f ~/.local/share/figlet-fonts/pagga"
+alias fistory="history | cut -c 8- | fzf | xclip -selection clipboard"
+
+alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+alias fix-gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+alias fix-key="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias fix-keys="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias fix-keyserver="[ -d ~/.gnupg ] || mkdir ~/.gnupg ; cp /etc/pacman.d/gnupg/gpg.conf ~/.gnupg/ ; echo 'done'"
+alias fix-pacman-conf="/usr/local/bin/arcolinux-fix-pacman-conf"
+alias fix-pacman-keyserver="/usr/local/bin/arcolinux-fix-pacman-gpg-conf"
+alias fix-permissions="sudo chown -R $USER:$USER ~/.config ~/.local"
+alias fix-sddm-config="/usr/local/bin/arcolinux-fix-sddm-config"
+alias fixkey="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias fixkeys="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias free="free -mt"
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+alias grep='grep --color=auto'
+
+alias htop="htop --tree"
+alias hw="hwinfo --short"
+alias iso="cat /etc/dev-rel | awk -F '=' '/ISO/ {print $2}'"
+alias jctl="journalctl -p 3 -xb"
+
+alias kc='killall conky'
+alias key-fix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias keyfix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias keys-fix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
+alias kp='killall polybar'
+
+
+alias merge="xrdb -merge ~/.Xresources"
+
+alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 30 --number 10 --sort age --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 30 --number 10 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 30 --number 10 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
+alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
+alias mkd="mkdir -vp"
+alias narcomirrorlist='sudo nano /etc/pacman.d/arcolinux-mirrorlist'
+alias nconfgrub="sudo $EDITOR /boot/grub/grub.cfg"
+alias netapps="lspf -P -i -n"
+alias nfstab="sudo $EDITOR /etc/fstab"
+alias ngrub="sudo $EDITOR /etc/default/grub"
+alias nlightdm="sudo $EDITOR /etc/lightdm/lightdm.conf"
+alias nmirrorlist="sudo $EDITOR /etc/pacman.d/mirrorlist"
+alias nmkinitcpio="sudo $EDITOR /etc/mkinitcpio.conf"
+alias nnsswitch="sudo $EDITOR /etc/nsswitch.conf"
+alias npacman="sudo $EDITOR /etc/pacman.conf"
+alias nsamba="sudo $EDITOR /etc/samba/smb.conf"
+alias nsddm="sudo $EDITOR /etc/sddm.conf"
+alias nsddmk="sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf"
+alias nzsh="$EDITOR /home/saikat/.config/zsh/.zshrc"
+alias nzshp="$EDITOR /home/saikat/.config/zsh/.zshrc-personal"
+alias pacman='sudo pacman --color auto'
+alias paruskip='paru -S --mflags --skipinteg'
+alias pkgfind="paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S"
+alias pksyua="paru -Syu --noconfirm"
+
+if [[ -x /usr/bin/powerprofilesctl ]]; then
+	alias pp="powerprofilesctl"
+	alias ppb="sudo powerprofilesctl set balanced"
+	alias ppp="sudo powerprofilesctl set performance"
+	alias pps="sudo powerprofilesctl set power-saver"
+fi
+
+alias psa="ps auxf"
+alias rg="rg --sort path"
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
+
+alias setbg="nitrogen --set-scaled --save"
+alias sx="sxiv -b ./"
+alias sysfailed="systemctl list-units --failed"
+alias sz="du -sh"
+
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+
+alias togdm="sudo pacman -S gdm --noconfirm --needed ; sudo systemctl enable gdm.service -f ; echo 'Gdm is active - reboot now'"
+alias tolightdm="sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm --needed ; sudo systemctl enable lightdm.service -f ; echo 'Lightm is active - reboot now'"
+alias tolxdm="sudo pacman -S lxdm --noconfirm --needed ; sudo systemctl enable lxdm.service -f ; echo 'Lxdm is active - reboot now'"
+alias toly="sudo pacman -S ly --noconfirm --needed ; sudo systemctl enable ly.service -f ; echo 'Ly is active - reboot now'"
+alias tosddm="sudo pacman -S sddm --noconfirm --needed ; sudo systemctl enable sddm.service -f ; echo 'Sddm is active - reboot now'"
+
+alias update-fc='sudo fc-cache -fv'
+alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias update='sudo pacman -Syyu'
+alias userlist="cut -d: -f1 /etc/passwd"
+
+alias wget="wget -c"
+alias xrload="xrdb -load ~/.config/X11/xresources"
+
+# Yt-dlp
+if [[ -x /usr/bin/yt-dlp ]]; then
+    # Audio
+    alias yta-aac="yt-dlp --extract-audio --audio-format aac "
+    alias yta-best="yt-dlp --extract-audio --audio-format best "
+    alias yta-flac="yt-dlp --extract-audio --audio-format flac "
+    alias yta-mp3="yt-dlp --extract-audio --audio-format mp3 "
+    alias yta="yt-dlp --extract-audio --audio-format "
+    # Video
+    alias ytf="yt-dlp -F"
+    alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
+    alias ytv-best="yt-dlp -f bestvideo+bestaudio "
+    alias ytv-list="yt-dlp -f bestvideo+bestaudio --yes-playlist"
+fi
+
+# Rsync
+alias yy="rsync -vP"
+alias yyd="rsync -dprvP"
+
+# sudo not required for some system commands
+for command in mount umount intel_gpu_top; do
+	alias $command="sudo $command"
+done; unset command
+
+source $XDG_CONFIG_HOME/shell/functionrc
+
+alias fcd='fuzzy-change-dir'
+alias psgrep='fuzzy-psgrep'
+alias disks='list-disks'
+alias gpus='list-gpus'

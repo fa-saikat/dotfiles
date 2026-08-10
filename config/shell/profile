@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# User enviroment variables
+#
+# Source in SHELLRC
+
+# User directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+export DOTFILES_HOME="$XDG_DATA_HOME/dotfiles"
+export SUCKLESS_HOME="$XDG_DATA_HOME/suckless-stuff"
+
+export AUTORANDR_PROFILE_FOLDER="$XDG_CONFIG_HOME/autorandr"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+# export LIBVA_DRIVER_NAME=iHD
+export LIBVA_DRIVER_NAME=nvidia
+export VDPAU_DRIVER=va_gl
+
+# Look and feel
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# Firefox
+if [[ "$XDG_SESSION_TYPE" == "x11" ]]; then
+    export MOZ_ACCELERATED=1
+    export MOZ_USE_XINPUT2=1
+	export GTK_IM_MODULE=ibus
+	export XMODFIERS=@im=ibus
+	export QT_IM_MODULE=ibus
+else
+	export MOZ_ENABLE_WAYLAND=1
+fi
+
+# Plasma
+if [[ $XDG_SESSION_DESKTOP == "KDE" ]]; then
+	export GTK_USE_PORTAL=1
+fi
+
+# Zsh config path
+if [[ $SHELL == "/bin/zsh" ]]; then
+	export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+	export HISTFILE="$XDG_STATE_HOME/zsh/history"
+fi
+
+export HISTCONTROL=ignoreboth:erasedups
+export HISTSIZE=50000
+export SAVEHIST=50000
+
+
+# Default programs
+# Editor
+# Use neovim for vim if present.
+# [[ -x "$(command -v nvim)" ]] && alias v="nvim" vimdiff="nvim -d"
+if [[ "$(command -v nvim)" ]]; then
+    export EDITOR='nvim'
+    export VISUAL='nvim'
+else
+    export EDITOR='vim'
+    export VISUAL='vim'
+fi
+alias v="$EDITOR"
+alias vv="sudoedit"
+export BROWSER='firefox'
+export MANPAGER='vim -M +MANPAGER "+set nonumber" -'
+export READER='zathura'
+
+
+# Executable path
+export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/.flutter/bin"
+export PATH="$PATH:$HOME/.local/share/dotfiles/bin"
+export PATH="$PATH:$(find $HOME/.local/bin/ -type d -printf ":%p")"
+
+# xset
+xset r rate 250 100

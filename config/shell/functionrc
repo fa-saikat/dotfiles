@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Shell functions
+#
+# Source in aliasrc
+
+fuzzy-change-dir() {
+    cd "$(find ~/ /files -type d | fzf)"
+}
+
+fuzzy-psgrep() {
+    ps -u $USER -o pid,comm |cut -c 2- | fzf | awk '{print $1}' | xclip -selection clipboard
+}
+
+list-disks() {
+    lsblk -o NAME,FSTYPE,FSUSE%,SIZE,MOUNTPOINT
+}
+
+list-gpus() {
+	lspci | grep -iE "3d|display|vga"	
+}
